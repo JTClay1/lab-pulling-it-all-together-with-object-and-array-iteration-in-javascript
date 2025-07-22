@@ -114,3 +114,88 @@ function gameObject() {
         },
     };
 }
+function numPointsScored(playerName) {
+    const game = gameObject ();
+    for (let teamKey in game) {
+        const team = game[teamKey];
+        for (let player in team.players) {
+            if (player === playerName) {
+                return team.players[player].points;
+            }
+        }
+    }
+}
+function shoeSize(playerName) {
+    const game =gameObject();
+    for (let teamKey in game) {
+        const team = game[teamKey];
+        for (let player in team.players) {
+            if (player === playerName) {
+                return team.players[player].shoe;
+            }
+        }
+    }
+}
+function teamColors(teamName) {
+    const game = gameObject();
+    for (let teamKey in game) {
+        const team = game[teamKey];
+        if (team.teamName === teamName){
+            return team.colors;
+        }
+    }
+}
+function teamNames() {
+  const game = gameObject();
+  const names = [];
+
+  for (let teamKey in game) {
+    names.push(game[teamKey].teamName);
+  }
+
+  return names;
+}
+function playerNumbers(teamName) {
+  const game = gameObject();
+  const numbers = [];
+
+  for (let teamKey in game) {
+    const team = game[teamKey];
+    if (team.teamName === teamName) {
+      for (let player in team.players) {
+        numbers.push(team.players[player].number);
+      }
+    }
+  }
+
+  return numbers;
+}
+function playerStats(playerName) {
+  const game = gameObject();
+  for (let teamKey in game) {
+    const team = game[teamKey];
+    for (let player in team.players) {
+      if (player === playerName) {
+        return team.players[player];
+      }
+    }
+  }
+}
+function bigShoeRebounds() {
+  const game = gameObject();
+  let biggestShoe = 0;
+  let rebounds = 0;
+
+  for (let teamKey in game) {
+    const team = game[teamKey];
+    for (let player in team.players) {
+      const playerData = team.players[player];
+      if (playerData.shoe > biggestShoe) {
+        biggestShoe = playerData.shoe;
+        rebounds = playerData.rebounds;
+      }
+    }
+  }
+
+  return rebounds;
+}
